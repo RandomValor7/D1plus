@@ -11,6 +11,7 @@ router.use('/', require('./pedidos.routes'));
 router.use('/', require('./proveedores.routes'));
 router.use('/', require('./reportes.routes'));
 router.use('/', require('./notificaciones.routes'));
+router.use('/', require('./auditoria.routes'));
 
 module.exports = router;
 
