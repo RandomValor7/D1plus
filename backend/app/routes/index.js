@@ -12,6 +12,7 @@ router.use('/', require('./proveedores.routes'));
 router.use('/', require('./reportes.routes'));
 router.use('/', require('./notificaciones.routes'));
 router.use('/', require('./auditoria.routes'));
+router.use('/', require('./modales.routes'));
 
 module.exports = router;
 
