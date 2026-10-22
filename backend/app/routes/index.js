@@ -8,6 +8,7 @@ router.use('/', require('./usuarios.routes'));
 router.use('/', require('./inventario.routes'));
 router.use('/', require('./ventas.routes'));
 router.use('/', require('./pedidos.routes'));
+router.use('/', require('./proveedores.routes'));
 
 module.exports = router;
 
