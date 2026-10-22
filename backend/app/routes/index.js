@@ -10,6 +10,7 @@ router.use('/', require('./ventas.routes'));
 router.use('/', require('./pedidos.routes'));
 router.use('/', require('./proveedores.routes'));
 router.use('/', require('./reportes.routes'));
+router.use('/', require('./notificaciones.routes'));
 
 module.exports = router;
 
