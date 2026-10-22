@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Baja Rotación</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios">Usuarios</a></li>
+<li><a href="/inventario_general" aria-current="page">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos">Pedidos</a></li>
+<li><a href="/listado_proveedores">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Baja Rotación</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li><a href="/inventario_general">Inventario General</a></li><li><a href="/registrar_entrada">Registrar Entrada</a></li><li><a href="/registrar_salida">Registrar Salida</a></li><li><a href="/actualizar_inventario">Actualizar Inventario</a></li><li><a href="/productos_vencidos">Productos Vencidos</a></li><li>Baja Rotación (actual)</li></ul></nav>
+      
+      <table border="1" cellpadding="6" cellspacing="0">
+  <caption>Alertas por Baja Rotacion</caption>
+  <thead><tr><th scope="col">Producto</th><th scope="col">Ubicacion</th><th scope="col">Dias sin Movimiento</th><th scope="col">Cantidad de Stock</th><th scope="col">Estado</th></tr></thead>
+  <tbody>
+  <tr><td>Vinagre Blanco 500ml</td><td>Tienda Norte</td><td>45 dias</td><td>22</td><td>Alerta</td></tr>
+  <tr><td>Especias Surtidas</td><td>Bodega Principal</td><td>60 dias</td><td>15</td><td>Critico</td></tr>
+  <tr><td>Yogurt Natural 200g</td><td>Tienda Centro</td><td>39 dias</td><td>9</td><td>Alerta</td></tr>
+  <tr><td>Pan Tajado</td><td>Tienda Centro</td><td>39 dias</td><td>18</td><td>Alerta</td></tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

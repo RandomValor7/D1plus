@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Crear / Editar Usuario</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios" aria-current="page">Usuarios</a></li>
+<li><a href="/inventario_general">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos">Pedidos</a></li>
+<li><a href="/listado_proveedores">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Crear / Editar Usuario</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li><a href="/listado_usuarios">Listado de Usuarios</a></li><li><a href="/roles_y_permisos">Roles y Permisos</a></li><li>Crear / Editar Usuario (actual)</li><li><a href="/crear_editar_rol">Crear / Editar Rol</a></li></ul></nav>
+      <p class="inferred-note"><em>(Pantalla inferida: no aparecia como mockup completo en el PDF del prototipo)</em></p>
+      <form action="/modal_operacion_exitosa" method="get"><p><label for="f11_nombrecompleto">Nombre Completo</label><br><input type="text" id="f11_nombrecompleto" name="f11_nombrecompleto" placeholder="Escribe aqui..."></p><p><label for="f12_correoelectronico">Correo Electronico</label><br><input type="text" id="f12_correoelectronico" name="f12_correoelectronico" placeholder="Escribe aqui..."></p><p><label for="f13_rol">Rol</label><br><select id="f13_rol" name="f13_rol"><option>Administrador</option><option>Vendedor</option><option>Bodeguero</option><option>Moderador</option><option>Usuario</option></select></p><p><label for="f14_estado">Estado</label><br><select id="f14_estado" name="f14_estado"><option>Activo</option><option>Inactivo</option></select></p><p class="btn-row"><button type="submit" class="btn btn-primary">Guardar</button> <a href="/listado_usuarios" class="btn btn-secondary">Cancelar</a></p></form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Notificaciones</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios">Usuarios</a></li>
+<li><a href="/inventario_general">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos">Pedidos</a></li>
+<li><a href="/listado_proveedores">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones" aria-current="page">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Notificaciones</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      
+      
+      <p><label for="f71_todaslasnotificacion">Todas las notificaciones</label><br><select id="f71_todaslasnotificacion" name="f71_todaslasnotificacion"><option>-- Seleccionar --</option></select></p><table border="1" cellpadding="6" cellspacing="0">
+  <caption>Centro de Notificaciones</caption>
+  <thead><tr><th scope="col">Notificacion</th><th scope="col">Hace</th></tr></thead>
+  <tbody>
+  <tr><td>Stock bajo: Leche Entera 1L en Tienda Norte</td><td>10 minutos</td></tr>
+  <tr><td>Nuevo pedido pendiente de aprobacion: P-0001</td><td>1 hora</td></tr>
+  <tr><td>Producto vencido: Arroz Diana 500g</td><td>3 horas</td></tr>
+  <tr><td>Error critico: fallo al sincronizar inventario</td><td>Ayer</td></tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

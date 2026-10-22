@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Aprobar Pedido</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios">Usuarios</a></li>
+<li><a href="/inventario_general">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos" aria-current="page">Pedidos</a></li>
+<li><a href="/listado_proveedores">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Aprobar Pedido</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li><a href="/listado_pedidos">Listado de Pedidos</a></li><li><a href="/generar_pedido">Generar Pedido</a></li><li><a href="/editar_pedido">Editar Pedido</a></li><li>Aprobar Pedido (actual)</li><li><a href="/registrar_despacho">Registrar Despacho</a></li><li><a href="/confirmar_recepcion">Confirmar Recepción</a></li></ul></nav>
+      
+      <p><label for="f48_proveedor">Proveedor</label><br><input type="text" id="f48_proveedor" name="f48_proveedor" placeholder="Escribe aqui..." value="Distribuidora ABC"></p><p><label for="f49_fechaestimadadeentre">Fecha estimada de entrega</label><br><input type="text" id="f49_fechaestimadadeentre" name="f49_fechaestimadadeentre" placeholder="Escribe aqui..." value="28/08/2026"></p><table border="1" cellpadding="6" cellspacing="0">
+  <caption>Pedido #P-0001</caption>
+  <thead><tr><th scope="col">Producto</th><th scope="col">Cantidad</th><th scope="col">Precio Estimado</th></tr></thead>
+  <tbody>
+  <tr><td>Arroz Diana 500g</td><td>100</td><td>$350.000</td></tr>
+  <tr><td>Aceite Girasol 1L</td><td>50</td><td>$800.000</td></tr>
+  <tr><td>Leche Entera 1L</td><td>30</td><td>$105.000</td></tr>
+  </tbody>
+</table><p class="btn-row"><a href="/registrar_despacho" class="btn btn-success">Aprobar Pedido</a> <a href="/listado_pedidos" class="btn btn-danger">Rechazar Pedido</a></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

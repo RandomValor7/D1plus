@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Inventario General</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios">Usuarios</a></li>
+<li><a href="/inventario_general" aria-current="page">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos">Pedidos</a></li>
+<li><a href="/listado_proveedores">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Inventario General</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li>Inventario General (actual)</li><li><a href="/registrar_entrada">Registrar Entrada</a></li><li><a href="/registrar_salida">Registrar Salida</a></li><li><a href="/actualizar_inventario">Actualizar Inventario</a></li><li><a href="/productos_vencidos">Productos Vencidos</a></li><li><a href="/baja_rotacion">Baja Rotación</a></li></ul></nav>
+      
+      <p><label for="f24_todaslasubicaciones">Todas las ubicaciones</label><br><select id="f24_todaslasubicaciones" name="f24_todaslasubicaciones"><option>-- Seleccionar --</option></select></p><p class="btn-row"><a href="/registrar_entrada" class="btn btn-primary">+ Registrar Producto</a></p><table border="1" cellpadding="6" cellspacing="0">
+  <caption>Inventario General</caption>
+  <thead><tr><th scope="col">Producto</th><th scope="col">Ubicacion</th><th scope="col">Cantidad</th><th scope="col">Estado</th><th scope="col">Acciones</th></tr></thead>
+  <tbody>
+  <tr><td>Arroz Diana 500g</td><td>Tienda Centro</td><td>85</td><td>Disponible</td><td><a href="/actualizar_inventario" class="action-link">Editar</a></td></tr>
+  <tr><td>Aceite Girasol 1L</td><td>Bodega Principal</td><td>200</td><td>Disponible</td><td><a href="/actualizar_inventario" class="action-link">Editar</a></td></tr>
+  <tr><td>Leche Entera 1L</td><td>Tienda Norte</td><td>6</td><td>Stock Bajo</td><td><a href="/actualizar_inventario" class="action-link">Editar</a></td></tr>
+  <tr><td>Papel Higienico x4</td><td>Bodega Principal</td><td>0</td><td>Agotado</td><td><a href="/actualizar_inventario" class="action-link">Editar</a></td></tr>
+  </tbody>
+</table><p class="btn-row"><a href="/registrar_salida" class="btn btn-primary">Registrar Salida</a> <a href="/actualizar_inventario" class="btn btn-primary">Actualizar Cantidad</a> <a href="/productos_vencidos" class="btn btn-secondary">Productos Vencidos</a> <a href="/baja_rotacion" class="btn btn-secondary">Baja Rotacion</a></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

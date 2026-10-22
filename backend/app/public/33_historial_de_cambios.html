@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Historial de Cambios</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios">Usuarios</a></li>
+<li><a href="/inventario_general">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos">Pedidos</a></li>
+<li><a href="/listado_proveedores">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria" aria-current="page">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Historial de Cambios</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li><a href="/registro_de_auditoria">Registro de Auditoría</a></li><li>Historial de Cambios (actual)</li></ul></nav>
+      
+      <p><label for="f73_todoslosmodulos">Todos los modulos</label><br><select id="f73_todoslosmodulos" name="f73_todoslosmodulos"><option>-- Seleccionar --</option></select></p><table border="1" cellpadding="6" cellspacing="0">
+  <caption>Historial de Cambios en Inventario, Ventas y Pedidos</caption>
+  <thead><tr><th scope="col">Modulo</th><th scope="col">Registro Afectado</th><th scope="col">Cambio Realizado</th><th scope="col">Fecha</th></tr></thead>
+  <tbody>
+  <tr><td>Inventario</td><td>Arroz Diana 500g</td><td>Cantidad actualizada de 90 a 85</td><td>03/09/2026</td></tr>
+  <tr><td>Ventas</td><td>Venta V-0003</td><td>Estado cambiado a Anulada</td><td>02/09/2026</td></tr>
+  <tr><td>Pedidos</td><td>Pedido P-0002</td><td>Estado cambiado a Aprobado</td><td>30/08/2026</td></tr>
+  <tr><td>Proveedores</td><td>Proveedora Nacional</td><td>Telefono de contacto actualizado</td><td>01/09/2026</td></tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

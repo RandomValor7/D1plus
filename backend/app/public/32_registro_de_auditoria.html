@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Registro de Auditoría</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios">Usuarios</a></li>
+<li><a href="/inventario_general">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos">Pedidos</a></li>
+<li><a href="/listado_proveedores">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria" aria-current="page">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Registro de Auditoría</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li>Registro de Auditoría (actual)</li><li><a href="/historial_de_cambios">Historial de Cambios</a></li></ul></nav>
+      
+      <p><label for="f72_todoslosusuarios">Todos los usuarios</label><br><select id="f72_todoslosusuarios" name="f72_todoslosusuarios"><option>-- Seleccionar --</option></select></p><p class="btn-row"><a href="/historial_de_cambios" class="btn btn-secondary">Ver Historial de Cambios</a></p><table border="1" cellpadding="6" cellspacing="0">
+  <caption>Registro de Auditoria</caption>
+  <thead><tr><th scope="col">Usuario</th><th scope="col">Accion</th><th scope="col">Modulo</th><th scope="col">Fecha y Hora</th></tr></thead>
+  <tbody>
+  <tr><td>Tatiana Rodriguez</td><td>Aprobo pedido P-0002</td><td>Pedidos</td><td>03/09/2026 09:15 a.m.</td></tr>
+  <tr><td>Pablo Montoya</td><td>Registro entrada de mercancia</td><td>Inventario</td><td>03/09/2026 08:40 a.m.</td></tr>
+  <tr><td>Milo Ramirez</td><td>Elimino usuario Ferran Garcia</td><td>Usuarios</td><td>02/09/2026 05:20 p.m.</td></tr>
+  <tr><td>Gabriela Rodriguez</td><td>Anulo venta V-0003</td><td>Ventas</td><td>02/09/2026 03:10 p.m.</td></tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

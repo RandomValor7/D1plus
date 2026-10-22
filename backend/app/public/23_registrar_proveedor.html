@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Registrar Proveedor</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios">Usuarios</a></li>
+<li><a href="/inventario_general">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos">Pedidos</a></li>
+<li><a href="/listado_proveedores" aria-current="page">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Registrar Proveedor</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li><a href="/listado_proveedores">Listado de Proveedores</a></li><li>Registrar Proveedor (actual)</li><li><a href="/asociar_productos">Asociar Productos</a></li><li><a href="/devolucion_proveedor">Devolución a Proveedor</a></li></ul></nav>
+      
+      <form action="/modal_operacion_exitosa" method="get"><p><label for="f58_nombredelproveedor">Nombre del proveedor</label><br><input type="text" id="f58_nombredelproveedor" name="f58_nombredelproveedor" placeholder="Escribe aqui..."></p><p><label for="f59_nit">NIT</label><br><input type="text" id="f59_nit" name="f59_nit" placeholder="Escribe aqui..."></p><p><label for="f60_telefonodecontacto">Telefono de contacto</label><br><input type="text" id="f60_telefonodecontacto" name="f60_telefonodecontacto" placeholder="Escribe aqui..."></p><p><label for="f61_tipodeproductosqueof">Tipo de productos que ofrece</label><br><input type="text" id="f61_tipodeproductosqueof" name="f61_tipodeproductosqueof" placeholder="Escribe aqui..."></p><p class="btn-row"><button type="submit" class="btn btn-primary">Guardar Proveedor</button> <a href="/listado_proveedores" class="btn btn-secondary">Cancelar</a></p></form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
