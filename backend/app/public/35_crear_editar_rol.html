@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Crear / Editar Rol</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios" aria-current="page">Usuarios</a></li>
+<li><a href="/inventario_general">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos">Pedidos</a></li>
+<li><a href="/listado_proveedores">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Crear / Editar Rol</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li><a href="/listado_usuarios">Listado de Usuarios</a></li><li><a href="/roles_y_permisos">Roles y Permisos</a></li><li><a href="/crear_editar_usuario">Crear / Editar Usuario</a></li><li>Crear / Editar Rol (actual)</li></ul></nav>
+      <p class="inferred-note"><em>(Pantalla inferida: no aparecia como mockup completo en el PDF del prototipo)</em></p>
+      <form action="/modal_operacion_exitosa" method="get"><p><label for="f15_nombredelrol">Nombre del Rol</label><br><input type="text" id="f15_nombredelrol" name="f15_nombredelrol" placeholder="Escribe aqui..."></p><p><label for="f16_descripcion">Descripcion</label><br><input type="text" id="f16_descripcion" name="f16_descripcion" placeholder="Escribe aqui..."></p><fieldset>
+<legend>Permisos</legend>
+<p><label><input type="checkbox" id="f17_usuarios" name="f17_usuarios"> Usuarios</label></p><p><label><input type="checkbox" id="f18_inventario" name="f18_inventario"> Inventario</label></p><p><label><input type="checkbox" id="f19_ventas" name="f19_ventas"> Ventas</label></p><p><label><input type="checkbox" id="f20_pedidos" name="f20_pedidos"> Pedidos</label></p><p><label><input type="checkbox" id="f21_proveedores" name="f21_proveedores"> Proveedores</label></p><p><label><input type="checkbox" id="f22_reportes" name="f22_reportes"> Reportes</label></p><p><label><input type="checkbox" id="f23_auditoria" name="f23_auditoria"> Auditoria</label></p>
+</fieldset><p class="btn-row"><button type="submit" class="btn btn-primary">Guardar</button> <a href="/roles_y_permisos" class="btn btn-secondary">Cancelar</a></p></form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reporte de Ventas</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios">Usuarios</a></li>
+<li><a href="/inventario_general">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos">Pedidos</a></li>
+<li><a href="/listado_proveedores">Proveedores</a></li>
+<li><a href="/panel_de_reportes" aria-current="page">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Reporte de Ventas</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li><a href="/panel_de_reportes">Panel de Reportes</a></li><li>Reporte de Ventas (actual)</li><li><a href="/reporte_de_pedidos">Reporte de Pedidos</a></li><li><a href="/rotacion_de_productos">Rotación de Productos</a></li><li><a href="/productos_agotados">Productos Agotados</a></li><li><a href="/reporte_inventario_tiempo_real">Reporte de Inventario en Tiempo Real</a></li></ul></nav>
+      
+      <fieldset><legend>Total de Ventas</legend><p>$1.245.000</p></fieldset><fieldset><legend>N. de Transacciones</legend><p>48</p></fieldset><fieldset><legend>Ticket Promedio</legend><p>$25.937</p></fieldset><p><label for="f68_todaslasfechas">Todas las fechas</label><br><select id="f68_todaslasfechas" name="f68_todaslasfechas"><option>-- Seleccionar --</option></select></p><p class="btn-row"><a href="/modal_exportar_reporte" class="btn btn-secondary">Exportar</a></p><table border="1" cellpadding="6" cellspacing="0">
+  <caption>Reporte de Ventas</caption>
+  <thead><tr><th scope="col">N. Venta</th><th scope="col">Fecha</th><th scope="col">Total</th><th scope="col">Estado</th><th scope="col">Acciones</th></tr></thead>
+  <tbody>
+  <tr><td>V-0001</td><td>01/09/2026</td><td>$27.400</td><td>Completada</td><td>Anular</td></tr>
+  <tr><td>V-0002</td><td>02/09/2026</td><td>$15.200</td><td>Anulada</td><td></td></tr>
+  <tr><td>V-0003</td><td>02/09/2026</td><td>$8.200</td><td>Anulada</td><td></td></tr>
+  <tr><td>V-0004</td><td>03/09/2026</td><td>$11.400</td><td>Completada</td><td>Anular</td></tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

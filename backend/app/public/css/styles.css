@@ -1,0 +1,373 @@
+/* 
+   D1pluS / D1+ - Sistema de diseño
+   Basado en el prototipo de Figma: sidebar oscuro, topbar claro,
+   botones azules primarios, tarjetas blancas.
+    */
+
+:root {
+  --azul-primario: #2563eb;
+  --azul-primario-hover: #1d4ed8;
+  --verde: #16a34a;
+  --verde-hover: #15803d;
+  --rojo: #dc2626;
+  --rojo-hover: #b91c1c;
+  --gris-oscuro: #1e293b;
+  --gris-oscuro-2: #263449;
+  --gris-texto: #334155;
+  --gris-suave: #64748b;
+  --gris-borde: #e2e8f0;
+  --fondo-app: #f4f6f9;
+  --blanco: #ffffff;
+  --sombra: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background: var(--fondo-app);
+  color: var(--gris-texto);
+}
+
+h1, h2, h3 { margin: 0 0 12px 0; color: #0f172a; }
+
+/* ---------------- Layout general (pantallas internas) ---------------- */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--gris-oscuro);
+  color: #cbd5e1;
+  padding: 20px 14px;
+}
+
+.sidebar .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.sidebar .logo img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar nav a {
+  display: block;
+  padding: 10px 12px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.sidebar nav a:hover {
+  background: var(--gris-oscuro-2);
+  color: #fff;
+}
+
+.sidebar nav a[aria-current="page"] {
+  background: var(--azul-primario);
+  color: #fff;
+  font-weight: 600;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  background: var(--blanco);
+  border-bottom: 1px solid var(--gris-borde);
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topbar .page-title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--gris-texto);
+}
+
+.user-chip .avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  display: inline-block;
+}
+
+.user-chip .status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #f59e0b;
+  display: inline-block;
+}
+
+.logout-link {
+  color: var(--rojo);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid var(--rojo);
+  padding: 5px 12px;
+  border-radius: 6px;
+  margin-left: 6px;
+}
+
+.logout-link:hover {
+  background: var(--rojo);
+  color: #fff;
+}
+
+.content {
+  padding: 24px 28px;
+  max-width: 1100px;
+}
+
+/* ---------------- Menú/submenú auxiliares ---------------- */
+nav[aria-label="Pantallas del modulo"] {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+
+nav[aria-label="Pantallas del modulo"] p {
+  margin: 0 0 6px 0;
+  font-weight: 600;
+  color: #3730a3;
+}
+
+nav[aria-label="Pantallas del modulo"] ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+nav[aria-label="Pantallas del modulo"] a {
+  color: var(--azul-primario);
+}
+
+.inferred-note {
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  color: #92400e;
+}
+
+/* ---------------- Tarjetas / fieldset ---------------- */
+fieldset {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 10px;
+  box-shadow: var(--sombra);
+  padding: 16px 18px;
+  margin: 0 0 18px 0;
+}
+
+legend {
+  padding: 0 6px;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--gris-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* fieldset usados como tarjetas KPI (varios seguidos) */
+.content > fieldset:has(> p:only-child) {
+  display: inline-block;
+  min-width: 170px;
+  margin-right: 14px;
+  text-align: center;
+}
+
+/* ---------------- Formularios ---------------- */
+form { margin: 0; }
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gris-texto);
+}
+
+input[type="text"], select {
+  width: 100%;
+  max-width: 420px;
+  padding: 9px 12px;
+  margin-top: 4px;
+  border: 1px solid var(--gris-borde);
+  border-radius: 6px;
+  background: var(--blanco);
+  font-size: 14px;
+  color: #0f172a;
+}
+
+input[type="text"]:focus, select:focus {
+  outline: none;
+  border-color: var(--azul-primario);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+input[type="checkbox"] { margin-right: 6px; }
+
+p { line-height: 1.5; }
+
+/* ---------------- Botones ---------------- */
+.btn, button, input[type="submit"] {
+  display: inline-block;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.btn-row { margin: 14px 0; }
+
+.btn-primary { background: var(--azul-primario); color: #fff; }
+.btn-primary:hover { background: var(--azul-primario-hover); }
+
+.btn-secondary { background: var(--blanco); color: var(--gris-texto); border-color: var(--gris-borde); }
+.btn-secondary:hover { background: #f1f5f9; }
+
+.btn-success { background: var(--verde); color: #fff; }
+.btn-success:hover { background: var(--verde-hover); }
+
+.btn-danger { background: var(--rojo); color: #fff; }
+.btn-danger:hover { background: var(--rojo-hover); }
+
+/* ---------------- Enlaces de accion dentro de tablas ---------------- */
+.action-link { color: var(--azul-primario); text-decoration: none; margin-right: 10px; font-size: 13px; font-weight: 600; }
+.action-link:hover { text-decoration: underline; }
+.action-danger { color: var(--rojo); text-decoration: none; margin-right: 10px; font-size: 13px; font-weight: 600; }
+.action-danger:hover { text-decoration: underline; }
+
+/* ---------------- Tablas ---------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 13px;
+  margin-bottom: 18px;
+  box-shadow: var(--sombra);
+}
+
+caption {
+  text-align: left;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 4px 0 12px 0;
+  color: #0f172a;
+}
+
+th, td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gris-borde);
+  text-align: left;
+}
+
+th {
+  background: #f8fafc;
+  color: var(--gris-suave);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f8fafc; }
+
+/* ---------------- Pantallas de autenticación ---------------- */
+.auth-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--fondo-app);
+}
+
+.auth-wrapper { width: 100%; max-width: 400px; padding: 20px; }
+
+.auth-card {
+  background: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.auth-logo img { width: 56px; height: 56px; margin-bottom: 10px; }
+
+.auth-card h2 { font-size: 18px; margin-bottom: 18px; color: #334155; font-weight: 500; }
+
+.auth-card p { text-align: left; }
+
+.auth-card .btn-row { text-align: center; }
+
+.auth-card p:has(> a:only-child) { text-align: center; font-size: 13px; }
+
+.auth-card a { color: var(--azul-primario); text-decoration: none; }
+.auth-card a:hover { text-decoration: underline; }
+
+/* ---------------- Modales ---------------- */
+.modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: rgba(15, 23, 42, 0.55);
+}
+
+dialog {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  padding: 26px 28px;
+  width: 380px;
+  max-width: 90vw;
+}
+
+dialog h2 { font-size: 17px; }

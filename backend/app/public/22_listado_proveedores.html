@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Listado de Proveedores</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios">Usuarios</a></li>
+<li><a href="/inventario_general">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos">Pedidos</a></li>
+<li><a href="/listado_proveedores" aria-current="page">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Listado de Proveedores</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li>Listado de Proveedores (actual)</li><li><a href="/registrar_proveedor">Registrar Proveedor</a></li><li><a href="/asociar_productos">Asociar Productos</a></li><li><a href="/devolucion_proveedor">Devolución a Proveedor</a></li></ul></nav>
+      
+      <p class="btn-row"><a href="/asociar_productos" class="btn btn-secondary">Asociar Producto</a> <a href="/devolucion_proveedor" class="btn btn-primary">Registrar devolucion</a> <a href="/registrar_proveedor" class="btn btn-primary">+ Nuevo Proveedor</a></p><table border="1" cellpadding="6" cellspacing="0">
+  <caption>Listado de Proveedores</caption>
+  <thead><tr><th scope="col">Nombre</th><th scope="col">NIT</th><th scope="col">Contacto</th><th scope="col">Productos que ofrece</th><th scope="col">Acciones</th></tr></thead>
+  <tbody>
+  <tr><td>Distribuidora ABC</td><td>900.123.456-1</td><td>301 555 0101</td><td>Abarrotes</td><td><a href="/modal_confirmar_eliminacion" class="action-danger">Eliminar</a> <a href="/registrar_proveedor" class="action-link">Editar</a></td></tr>
+  <tr><td>Alimentos del Valle</td><td>900.654.321-2</td><td>310 555 0202</td><td>Lacteos y perecederos</td><td><a href="/modal_confirmar_eliminacion" class="action-danger">Eliminar</a> <a href="/registrar_proveedor" class="action-link">Editar</a></td></tr>
+  <tr><td>Distribuidora ABC</td><td>900.989.113-4</td><td>302 755 0388</td><td>Abarrotes</td><td><a href="/modal_confirmar_eliminacion" class="action-danger">Eliminar</a> <a href="/registrar_proveedor" class="action-link">Editar</a></td></tr>
+  <tr><td>Proveedora Nacional</td><td>900.789.123-3</td><td>320 555 0303</td><td>Aseo y limpieza</td><td><a href="/modal_confirmar_eliminacion" class="action-danger">Eliminar</a> <a href="/registrar_proveedor" class="action-link">Editar</a></td></tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

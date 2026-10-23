@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Roles y Permisos</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios" aria-current="page">Usuarios</a></li>
+<li><a href="/inventario_general">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos">Pedidos</a></li>
+<li><a href="/listado_proveedores">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Roles y Permisos</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li><a href="/listado_usuarios">Listado de Usuarios</a></li><li>Roles y Permisos (actual)</li><li><a href="/crear_editar_usuario">Crear / Editar Usuario</a></li><li><a href="/crear_editar_rol">Crear / Editar Rol</a></li></ul></nav>
+      
+      <p class="btn-row"><a href="/crear_editar_rol" class="btn btn-primary">+ Nuevo Rol</a></p><table border="1" cellpadding="6" cellspacing="0">
+  <caption>Gestion de Roles y Permisos</caption>
+  <thead><tr><th scope="col">Rol</th><th scope="col">Descripcion</th><th scope="col">N. de Usuarios</th><th scope="col">Acciones</th></tr></thead>
+  <tbody>
+  <tr><td>Administrador</td><td>Acceso total al sistema</td><td>2</td><td><a href="/crear_editar_rol" class="action-link">Editar</a> <a href="/modal_confirmar_eliminacion" class="action-danger">Eliminar</a></td></tr>
+  <tr><td>Vendedor</td><td>Gestion de ventas y clientes</td><td>6</td><td><a href="/crear_editar_rol" class="action-link">Editar</a> <a href="/modal_confirmar_eliminacion" class="action-danger">Eliminar</a></td></tr>
+  <tr><td>Bodeguero</td><td>Gestion de inventario y pedidos</td><td>5</td><td><a href="/crear_editar_rol" class="action-link">Editar</a> <a href="/modal_confirmar_eliminacion" class="action-danger">Eliminar</a></td></tr>
+  <tr><td>Moderador</td><td>Supervision y Reportes</td><td>2</td><td><a href="/crear_editar_rol" class="action-link">Editar</a> <a href="/modal_confirmar_eliminacion" class="action-danger">Eliminar</a></td></tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

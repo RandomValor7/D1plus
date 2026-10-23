@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Listado de Pedidos</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo"><img src="img/logo.png" alt="D1pluS"><span>D1pluS</span></div>
+    <nav aria-label="Menu lateral">
+<ul>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/listado_usuarios">Usuarios</a></li>
+<li><a href="/inventario_general">Inventario</a></li>
+<li><a href="/historial_ventas">Ventas</a></li>
+<li><a href="/listado_pedidos" aria-current="page">Pedidos</a></li>
+<li><a href="/listado_proveedores">Proveedores</a></li>
+<li><a href="/panel_de_reportes">Reportes</a></li>
+<li><a href="/notificaciones">Notificaciones</a></li>
+<li><a href="/registro_de_auditoria">Auditoría</a></li>
+</ul>
+</nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h2 class="page-title">Listado de Pedidos</h2>
+      <div class="user-chip"><span class="avatar"></span>Milo Ramírez<span class="status-dot"></span><a href="/login" class="logout-link">Cerrar sesion</a></div>
+    </header>
+    <div class="content">
+      <nav aria-label="Pantallas del modulo"><p>Otras pantallas de este modulo:</p><ul><li>Listado de Pedidos (actual)</li><li><a href="/generar_pedido">Generar Pedido</a></li><li><a href="/editar_pedido">Editar Pedido</a></li><li><a href="/aprobar_pedido">Aprobar Pedido</a></li><li><a href="/registrar_despacho">Registrar Despacho</a></li><li><a href="/confirmar_recepcion">Confirmar Recepción</a></li></ul></nav>
+      
+      <p><label for="f39_todoslosestados">Todos los estados</label><br><select id="f39_todoslosestados" name="f39_todoslosestados"><option>-- Seleccionar --</option></select></p><p class="btn-row"><a href="/generar_pedido" class="btn btn-primary">+ Generar Pedido</a></p><table border="1" cellpadding="6" cellspacing="0">
+  <caption>Listado de Pedidos</caption>
+  <thead><tr><th scope="col">N. Pedido</th><th scope="col">Proveedor</th><th scope="col">Fecha</th><th scope="col">Estado</th><th scope="col">Acciones</th></tr></thead>
+  <tbody>
+  <tr><td>P-0001</td><td>Distribuidora ABC</td><td>28/08/2026</td><td>Pendiente</td><td><a href="/aprobar_pedido" class="action-link">Ver detalle</a></td></tr>
+  <tr><td>P-0002</td><td>Alimentos del Valle</td><td>30/08/2026</td><td>Aprobado</td><td><a href="/registrar_despacho" class="action-link">Ver detalle</a></td></tr>
+  <tr><td>P-0003</td><td>Distribuidora ABC</td><td>01/09/2026</td><td>Despachado</td><td><a href="/confirmar_recepcion" class="action-link">Ver detalle</a></td></tr>
+  <tr><td>P-0004</td><td>Proveedora Nacional</td><td>02/09/2026</td><td>Recibido</td><td><a href="/editar_pedido" class="action-link">Ver detalle</a></td></tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
