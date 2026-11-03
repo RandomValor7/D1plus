@@ -1,4 +1,4 @@
-export const faltanCampos = (res, datos, requeridos) => {
+const faltanCampos = (res, datos, requeridos) => {
     const faltan = requeridos.filter((campo) => {
         const valor = datos?.[campo];
         return valor === undefined || valor === "";
@@ -13,7 +13,7 @@ export const faltanCampos = (res, datos, requeridos) => {
     return true;
 };
 
-export const manejarError = (res, error, accion) => {
+const manejarError = (res, error, accion) => {
     console.error(error);
 
     const conocidos = {
@@ -23,6 +23,7 @@ export const manejarError = (res, error, accion) => {
     };
     const [estado, mensaje] = conocidos[error.code]
         ?? [500, "Error al " + accion];
-        
     res.status(estado).json({ mensaje });
 };
+
+module.exports = { faltanCampos, manejarError };

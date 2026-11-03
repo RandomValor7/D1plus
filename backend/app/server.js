@@ -1,11 +1,15 @@
 const express = require('express');
 const path = require('path');
 const rutas = require('./routes');
+const apiRutas = require('./routes/api'); 
 const app = express();
+
+app.use(express.json()); 
 
 app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
 app.use('/img', express.static(path.join(__dirname, 'public', 'img')));
 
+app.use('/api', apiRutas); 
 app.use('/', rutas);
 
 app.use((req, res) => {
@@ -14,4 +18,5 @@ app.use((req, res) => {
  '<a href="/login">Volver al login</a>'
  );
 });
+
 module.exports = app;
