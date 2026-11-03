@@ -1,1 +1,4 @@
-export * as ProductoModel from "./producto.model.js";
+
+module.exports = {
+    ProductoModel: require("./producto.model"),
+};

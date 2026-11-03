@@ -1,13 +1,13 @@
-import db from "../config/db.js";
+const db = require("../config/db");
 
-export const getAll = async () => {
+const getAll = async () => {
     const [filas] = await db.query(
         "SELECT * FROM producto"
     );
     return filas;
 };
 
-export const getById = async (id) => {
+const getById = async (id) => {
     const [filas] = await db.query(
         `SELECT * FROM producto
  WHERE id_producto = ?`,
@@ -16,7 +16,7 @@ export const getById = async (id) => {
     return filas[0];
 };
 
-export const create = async (datos) => {
+const create = async (datos) => {
     const {
         codigo, nombre, precio, descripcion = null, stock = 0,
         stock_minimo = 0, fecha_vencimiento = null
@@ -31,4 +31,6 @@ export const create = async (datos) => {
     );
     return resultado.insertId;
 };
+
+module.exports = { getAll, getById, create };
 

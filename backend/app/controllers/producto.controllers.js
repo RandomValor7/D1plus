@@ -1,7 +1,8 @@
-import { ProductoModel } from "../models/index.js";
-import { faltanCampos, manejarError } from "../utils/errores.js";
+const { ProductoModel } = require("../models");
+const { faltanCampos, manejarError } =
+    require("../utils/errores");
 
-export const getAll = async (req, res) => {
+const getAll = async (req, res) => {
     try {
         const datos = await ProductoModel.getAll();
         res.json(datos);
@@ -10,7 +11,7 @@ export const getAll = async (req, res) => {
     }
 };
 
-export const getById = async (req, res) => {
+const getById = async (req, res) => {
     try {
         const { id } = req.params;
         const dato = await ProductoModel.getById(id);
@@ -25,7 +26,7 @@ export const getById = async (req, res) => {
     }
 };
 
-export const create = async (req, res) => {
+const create = async (req, res) => {
     try {
         const requeridos = ["codigo", "nombre", "precio"];
         if (faltanCampos(res, req.body, requeridos)) {
@@ -41,3 +42,4 @@ export const create = async (req, res) => {
     }
 };
 
+module.exports = { getAll, getById, create };

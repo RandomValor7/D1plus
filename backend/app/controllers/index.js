@@ -1,1 +1,4 @@
-export * as ProductoController from "./producto.controllers.js";
+
+module.exports = {
+    ProductoController: require("./producto.controllers"),
+};
