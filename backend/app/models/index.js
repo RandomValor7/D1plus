@@ -16,5 +16,7 @@ module.exports = {
         require("./producto_proveedor.model"),
     PedidoModel: require("./pedido.model"),
     DetallePedidoModel: require("./detalle_pedido.model"),
+    NotificacionModel: require("./notificacion.model"),
+    AuditoriaModel: require("./auditoria.model"),
 
 };

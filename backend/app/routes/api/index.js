@@ -18,5 +18,7 @@ router.use("/producto-proveedor",
 router.use("/pedidos", require("./pedido.routes"));
 router.use("/detalle-pedidos",
     require("./detalle_pedido.routes"));
+router.use("/notificaciones", require("./notificacion.routes"));
+router.use("/auditorias", require("./auditoria.routes"));
 
 module.exports = router;

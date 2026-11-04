@@ -18,5 +18,8 @@ module.exports = {
     PedidoController: require("./pedido.controllers"),
     DetallePedidoController:
         require("./detalle_pedido.controllers"),
+    NotificacionController:
+        require("./notificacion.controllers"),
+    AuditoriaController: require("./auditoria.controllers"),
 
 };
