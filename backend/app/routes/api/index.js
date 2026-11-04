@@ -12,5 +12,11 @@ router.use("/movimientos",
     require("./movimiento_inventario.routes"));
 router.use("/ventas", require("./venta.routes"));
 router.use("/detalle-ventas", require("./detalle_venta.routes"));
+router.use("/proveedores", require("./proveedor.routes"));
+router.use("/producto-proveedor",
+    require("./producto_proveedor.routes"));
+router.use("/pedidos", require("./pedido.routes"));
+router.use("/detalle-pedidos",
+    require("./detalle_pedido.routes"));
 
 module.exports = router;

@@ -11,5 +11,10 @@ module.exports = {
         require("./movimiento_inventario.model"),
     aModel: require("./venta.model"),
     DetalleVentaModel: require("./detalle_venta.model"),
+    ProveedorModel: require("./proveedor.model"),
+    ProductoProveedorModel:
+        require("./producto_proveedor.model"),
+    PedidoModel: require("./pedido.model"),
+    DetallePedidoModel: require("./detalle_pedido.model"),
 
 };

@@ -12,6 +12,11 @@ module.exports = {
     VentaController: require("./venta.controllers"),
     DetalleVentaController:
         require("./detalle_venta.controllers"),
-
+    ProveedorController: require("./proveedor.controllers"),
+    ProductoProveedorController:
+        require("./producto_proveedor.controllers"),
+    PedidoController: require("./pedido.controllers"),
+    DetallePedidoController:
+        require("./detalle_pedido.controllers"),
 
 };
