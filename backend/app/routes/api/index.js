@@ -9,6 +9,8 @@ router.use("/bodegas", require("./bodega.routes"));
 router.use("/tiendas", require("./tienda.routes"));
 router.use("/inventarios", require("./inventario.routes"));
 router.use("/movimientos",
- require("./movimiento_inventario.routes"));
+    require("./movimiento_inventario.routes"));
+router.use("/ventas", require("./venta.routes"));
+router.use("/detalle-ventas", require("./detalle_venta.routes"));
 
 module.exports = router;

@@ -9,5 +9,9 @@ module.exports = {
     InventarioController: require("./inventario.controllers"),
     MovimientoInventarioController:
         require("./movimiento_inventario.controllers"),
+    VentaController: require("./venta.controllers"),
+    DetalleVentaController:
+        require("./detalle_venta.controllers"),
+
 
 };
