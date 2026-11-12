@@ -1,16 +1,58 @@
-# React + Vite
+# D1pluS – Frontend (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interfaz web del sistema D1pluS/D1+ (gestión interna de inventario,
+ventas, pedidos, proveedores, reportes, alertas y auditoría).
+Evidencia GA7-220501096-AA4-EV02. Los componentes de este proyecto son
+los que se describieron en el documento de componentes front-end.
 
-Currently, two official plugins are available:
+> Esta versión **no se conecta a ningún backend**: todas las pantallas
+> funcionan con datos de prueba guardados en `src/data/datosPrueba.js`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologías
+- React + Vite (JavaScript)
+- React Router (navegación entre pantallas)
+- CSS propio (`src/index.css`), basado en el sistema de diseño del
+ prototipo de Figma
+## Cómo ejecutarlo
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Abrir en el navegador la dirección que muestre la terminal
+(normalmente http://localhost:5173).
+## Usuarios de prueba
+ Rol // Correo  //  Contraseña 
+Administrador , admin@d1plus.com , Admin123.
+Gerente , gerente@d1plus.com , Gerente123.
+Empleado de tienda , tienda@d1plus.com , Tienda123. 
+Empleado de bodega , bodega@d1plus.com , Bodega123. 
+El menú lateral y las pantallas permitidas cambian según el rol.
+## Componentes descritos y codificados
+Estructura: (`src/App.jsx` y `src/components/layout/`)
+- App, AuthLayout, MainLayout, Sidebar, Topbar
+Interfaz reutilizable:(`src/components/ui/`)
+- Button, Input, Select, Card, Table, SearchFilter, Modal,
+ StatusBadge, Alert
+Seguridad:
+- AuthProvider (`src/context/AuthContext.jsx`)
+- ProtectedRoute (`src/components/common/ProtectedRoute.jsx`)
+- useIdleTimer (`src/hooks/useIdleTimer.js`)
+Específicos de D1pluS: (`src/components/common/`)
+- KpiCard, StockIndicator, NotificationBell, DetalleLineas,
+ ExportButton, JustificacionForm
+Pantallas por módulo:  (`src/pages/`)
+- Autenticación y usuarios: Login, RecuperarContrasena,
+ RegistrarUsuario, AsignarRoles
+- Inventario: InventarioGeneral, EntradaMercancia, SalidaMercancia,
+ActualizarInventario
+- Ventas: RegistrarVenta, HistorialVentas, AnularVentaModal
+- Pedidos: CrearPedido, ListaPedidos, AprobarPedido, DespacharPedido
+- Proveedores: ListaProveedores, RegistrarProveedor,
+ RegistrarDevolucion
+- Reportes: ReporteVentas, ReporteInventario, ReporteAgotados,
+ ReporteRotacion
+- Dashboard: DashboardPrincipal
+- Notificaciones: ListaNotificaciones
+- Auditoría: RegistroAuditoria, HistorialOperaciones
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
