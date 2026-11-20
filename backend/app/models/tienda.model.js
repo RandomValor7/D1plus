@@ -19,7 +19,7 @@ const getById = async (id) => {
 const create = async (datos) => {
     const { nombre, direccion, ciudad } = datos;
     const [resultado] = await db.query(
-        `INSERT INTO ti
+        `INSERT INTO tienda
  (nombre, direccion, ciudad)
  VALUES (?, ?, ?)`,
         [nombre, direccion, ciudad]

@@ -9,7 +9,7 @@ module.exports = {
     InventarioModel: require("./inventario.model"),
     MovimientoInventarioModel:
         require("./movimiento_inventario.model"),
-    aModel: require("./venta.model"),
+    VentaModel: require("./venta.model"),
     DetalleVentaModel: require("./detalle_venta.model"),
     ProveedorModel: require("./proveedor.model"),
     ProductoProveedorModel:
