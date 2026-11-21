@@ -1,5 +1,5 @@
 const { ProductoProveedorModel } = require("../models");
-const { faltanCampos, manejarError } =
+const { faltanCampos, manejarError, sinCambios } =
     require("../utils/errores");
 
 const getAll = async (req, res) => {
@@ -42,5 +42,42 @@ const create = async (req, res) => {
     }
 };
 
-module.exports = { getAll, getById, create };
+const update = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const editables = ["id_producto", "id_proveedor"];
+        if (sinCambios(res, req.body, editables)) {
+            return;
+        }
+        const existente = await ProductoProveedorModel.getById(id);
+        if (!existente) {
+            return res.status(404).json({
+                mensaje: "Registro no encontrado"
+            });
+        }
+        await ProductoProveedorModel.update(id, req.body);
+        res.json({ mensaje: "Registro actualizado" });
+    } catch (error) {
+        manejarError(res, error, "actualizar en producto_proveedor");
+    }
+};
+const remove = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const existente = await ProductoProveedorModel.getById(id);
+        if (!existente) {
+            return res.status(404).json({
+                mensaje: "Registro no encontrado"
+            });
+        }
+        await ProductoProveedorModel.remove(id);
+        res.json({ mensaje: "Registro eliminado" });
+    } catch (error) {
+        manejarError(res, error, "eliminar en producto_proveedor");
+    }
+};
+
+module.exports = {
+    getAll, getById, create, update, remove
+};
 
