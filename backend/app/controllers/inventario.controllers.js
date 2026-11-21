@@ -1,5 +1,5 @@
 const { InventarioModel } = require("../models");
-const { faltanCampos, manejarError } =
+const { faltanCampos, manejarError, sinCambios } =
     require("../utils/errores");
 
 const getAll = async (req, res) => {
@@ -42,6 +42,48 @@ const create = async (req, res) => {
     }
 };
 
-module.exports = { getAll, getById, create };
+const update = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const editables = ["cantidad"];
+        if (sinCambios(res, req.body, editables)) {
+            return;
+        }
+        if (Number(req.body.cantidad) < 0) {
+            return res.status(400).json({
+                mensaje: "La cantidad no puede ser negativa"
+            });
+        }
+        const existente = await InventarioModel.getById(id);
+        if (!existente) {
+            return res.status(404).json({
+                mensaje: "Registro no encontrado"
+            });
+        }
+        await InventarioModel.update(id, req.body);
+        res.json({ mensaje: "Registro actualizado" });
+    } catch (error) {
+        manejarError(res, error, "actualizar en inventario");
+    }
+};
 
+const remove = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const existente = await InventarioModel.getById(id);
+        if (!existente) {
+            return res.status(404).json({
+                mensaje: "Registro no encontrado"
+            });
+        }
+        await InventarioModel.remove(id);
+        res.json({ mensaje: "Registro eliminado" });
+    } catch (error) {
+        manejarError(res, error, "eliminar en inventario");
+    }
+};
+
+module.exports = {
+    getAll, getById, create, update, remove
+};
 
