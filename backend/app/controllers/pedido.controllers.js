@@ -1,5 +1,5 @@
 const { PedidoModel } = require("../models");
-const { faltanCampos, manejarError } =
+const { faltanCampos, manejarError, sinCambios } =
     require("../utils/errores");
 
 const getAll = async (req, res) => {
@@ -44,5 +44,48 @@ const create = async (req, res) => {
     }
 };
 
-module.exports = { getAll, getById, create };
+const update = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const editables = ["tipo_pedido", "estado", "id_proveedor"];
+        if (sinCambios(res, req.body, editables)) {
+            return;
+        }
+        const existente = await PedidoModel.getById(id);
+        if (!existente) {
+            return res.status(404).json({
+                mensaje: "Registro no encontrado"
+            });
+        }
+        await PedidoModel.update(id, req.body);
+        res.json({ mensaje: "Registro actualizado" });
+    } catch (error) {
+        manejarError(res, error, "actualizar en pedido");
+    }
+};
+
+const remove = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const existente = await PedidoModel.getById(id);
+        if (!existente) {
+            return res.status(404).json({
+                mensaje: "Registro no encontrado"
+            });
+        }
+        if (existente.estado !== "Pendiente") {
+            return res.status(409).json({
+                mensaje: "Solo se puede eliminar un pedido Pendiente"
+            });
+        }
+        await PedidoModel.remove(id);
+        res.json({ mensaje: "Registro eliminado" });
+    } catch (error) {
+        manejarError(res, error, "eliminar en pedido");
+    }
+};
+
+module.exports = {
+    getAll, getById, create, update, remove
+};
 
