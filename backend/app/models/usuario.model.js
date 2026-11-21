@@ -30,4 +30,33 @@ const create = async (datos) => {
     return resultado.insertId;
 };
 
-module.exports = { getAll, getById, create };
+const update = async (id, datos) => {
+    const {
+        nombre = null, correo = null, cargo = null, id_rol = null,
+        estado = null
+    } = datos;
+    const [resultado] = await db.query(
+        `UPDATE usuario
+ SET nombre = COALESCE(?, nombre),
+ correo = COALESCE(?, correo),
+ cargo = COALESCE(?, cargo),
+ id_rol = COALESCE(?, id_rol),
+ estado = COALESCE(?, estado)
+ WHERE id_usuario = ?`,
+        [nombre, correo, cargo, id_rol, estado, id]
+    );
+    return resultado.affectedRows;
+};
+
+const remove = async (id) => {
+    const [resultado] = await db.query(
+        `UPDATE usuario SET estado = 0
+ WHERE id_usuario = ?`,
+        [id]
+    );
+    return resultado.affectedRows;
+};
+
+module.exports = {
+    getAll, getById, create, update, remove
+};
