@@ -30,4 +30,33 @@ const create = async (datos) => {
     return resultado.insertId;
 };
 
-module.exports = { getAll, getById, create };
+const update = async (id, datos) => {
+    const {
+        nit = null, nombre = null, telefono = null, correo = null,
+        direccion = null
+    } = datos;
+    const [resultado] = await db.query(
+        `UPDATE proveedor
+ SET nit = COALESCE(?, nit),
+ nombre = COALESCE(?, nombre),
+ telefono = COALESCE(?, telefono),
+ correo = COALESCE(?, correo),
+ direccion = COALESCE(?, direccion)
+ WHERE id_proveedor = ?`,
+        [nit, nombre, telefono, correo, direccion, id]
+    );
+    return resultado.affectedRows;
+};
+
+const remove = async (id) => {
+    const [resultado] = await db.query(
+        `DELETE FROM proveedor
+ WHERE id_proveedor = ?`,
+        [id]
+    );
+    return resultado.affectedRows;
+};
+
+module.exports = {
+    getAll, getById, create, update, remove
+};
