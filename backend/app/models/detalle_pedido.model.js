@@ -27,5 +27,28 @@ const create = async (datos) => {
     return resultado.insertId;
 };
 
-module.exports = { getAll, getById, create };
+const update = async (id, datos) => {
+    const { cantidad = null, precio = null } = datos;
+    const [resultado] = await db.query(
+        `UPDATE detalle_pedido
+ SET cantidad = COALESCE(?, cantidad),
+ precio = COALESCE(?, precio)
+ WHERE id_detalle = ?`,
+        [cantidad, precio, id]
+    );
+    return resultado.affectedRows;
+};
+
+const remove = async (id) => {
+    const [resultado] = await db.query(
+        `DELETE FROM detalle_pedido
+ WHERE id_detalle = ?`,
+        [id]
+    );
+    return resultado.affectedRows;
+};
+
+module.exports = {
+    getAll, getById, create, update, remove
+};
 

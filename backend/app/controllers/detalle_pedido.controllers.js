@@ -1,5 +1,6 @@
-const { DetallePedidoModel } = require("../models");
-const { faltanCampos, manejarError } =
+const { DetallePedidoModel, PedidoModel } =
+    require("../models");
+const { faltanCampos, manejarError, sinCambios } =
     require("../utils/errores");
 
 const getAll = async (req, res) => {
@@ -44,5 +45,59 @@ const create = async (req, res) => {
     }
 };
 
-module.exports = { getAll, getById, create };
+const update = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const editables = ["cantidad", "precio"];
+        if (sinCambios(res, req.body, editables)) {
+            return;
+        }
+        const existente = await DetallePedidoModel.getById(id);
+        if (!existente) {
+            return res.status(404).json({
+                mensaje: "Registro no encontrado"
+            });
+        }
+        const pedido = await PedidoModel.getById(
+            existente.id_pedido
+        );
+        if (pedido.estado !== "Pendiente") {
+            return res.status(409).json({
+                mensaje: "Solo se modifica un pedido Pendiente"
+            });
+        }
+        await DetallePedidoModel.update(id, req.body);
+        res.json({ mensaje: "Registro actualizado" });
+    } catch (error) {
+        manejarError(res, error, "actualizar en detalle_pedido");
+    }
+};
+
+const remove = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const existente = await DetallePedidoModel.getById(id);
+        if (!existente) {
+            return res.status(404).json({
+                mensaje: "Registro no encontrado"
+            });
+        }
+        const pedido = await PedidoModel.getById(
+            existente.id_pedido
+        );
+        if (pedido.estado !== "Pendiente") {
+            return res.status(409).json({
+                mensaje: "Solo se modifica un pedido Pendiente"
+            });
+        }
+        await DetallePedidoModel.remove(id);
+        res.json({ mensaje: "Registro eliminado" });
+    } catch (error) {
+        manejarError(res, error, "eliminar en detalle_pedido");
+    }
+};
+
+module.exports = {
+    getAll, getById, create, update, remove
+};
 
