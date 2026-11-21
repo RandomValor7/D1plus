@@ -27,5 +27,32 @@ const create = async (datos) => {
     return resultado.insertId;
 };
 
-module.exports = { getAll, getById, create };
+const anular = async (id, idUsuario, justificacion) => {
+    const conexion = await db.getConnection();
+    try {
+        await conexion.beginTransaction();
+        await conexion.query(
+            `UPDATE venta SET estado = 'Anulada'
+ WHERE id_venta = ?`,
+            [id]
+        );
+        await conexion.query(
+            `INSERT INTO auditoria (accion, descripcion, id_usuario)
+ VALUES (?, ?, ?)`,
+            [
+                "Anular venta",
+                "Venta #" + id + " anulada: " + justificacion,
+                idUsuario
+            ]
+        );
+        await conexion.commit();
+    } catch (error) {
+        await conexion.rollback();
+        throw error;
+    } finally {
+        conexion.release();
+    }
+};
+
+module.exports = { getAll, getById, create, anular };
 
