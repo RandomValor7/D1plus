@@ -1,7 +1,7 @@
 const { UsuarioModel } = require("../models");
 const { faltanCampos, manejarError, sinCambios } =
     require("../utils/errores");
-
+const { encriptarPassword } = require("../utils/auth");
 const getAll = async (req, res) => {
     try {
         const datos = await UsuarioModel.getAll();
@@ -34,7 +34,18 @@ const create = async (req, res) => {
         if (faltanCampos(res, req.body, requeridos)) {
             return;
         }
-        const id = await UsuarioModel.create(req.body);
+        if (String(req.body.contrasena).length < 6) {
+            return res.status(400).json({
+                mensaje: "La contrasena debe tener minimo 6 letras"
+            });
+        }
+        const contrasena = await encriptarPassword(
+            req.body.contrasena
+        );
+        const id = await UsuarioModel.create({
+            ...req.body,
+            contrasena
+        });
         res.status(201).json({
             mensaje: "Registro creado",
             id
