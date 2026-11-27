@@ -1,4 +1,5 @@
 const { NotificacionModel } = require("../models");
+const alertas = require("../servicios/alertas");
 const { faltanCampos, manejarError, sinCambios } =
     require("../utils/errores");
 
@@ -77,6 +78,26 @@ const remove = async (req, res) => {
     }
 };
 
+// Las notificaciones del usuario que inicio sesion
+const mias = async (req, res) => {
+    try {
+        const filas = await NotificacionModel.getByUsuario(req.usuario.id);
+        res.json(filas);
+    } catch (error) {
+        manejarError(res, error, "consultar notificaciones");
+    }
+};
+// Revisa stock, vencimientos, pedidos y rotacion y crea las alertas
+const generar = async (req, res) => {
+    try {
+        const creadas = await alertas.generarAlertas();
+        res.json({ mensaje: "Alertas revisadas", creadas });
+    } catch (error) {
+        manejarError(res, error, "generar alertas");
+    }
+};
+
+
 module.exports = {
-    getAll, getById, create, update, remove
+    getAll, getById, create, update, remove, mias, generar
 };

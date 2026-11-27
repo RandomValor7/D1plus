@@ -67,6 +67,9 @@ router.get("/historial/operaciones", autorizarRoles(reportes),
     ReporteController.historial);
 // Dashboard (RF31 y RF32) y notificaciones (RF33 a RF36)
 router.get("/dashboard", DashboardController.resumen);
+router.get("/notificaciones/mias", NotificacionController.mias);
+router.post("/notificaciones/generar", autorizarRoles(alertas),
+    NotificacionController.generar);
 
 module.exports = router;
 

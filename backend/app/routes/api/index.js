@@ -1,12 +1,14 @@
 const { Router } = require("express");
 const { verificarToken, permitir } =
     require("../../middlewares/auth.middleware");
+const { auditar } = require("../../middlewares/auditoria.middleware");
 const { ACCESO } = require("../../config/permisos");
 const router = Router();
 // Login: es publico. /auth/me se protege dentro de auth.routes
 router.use("/auth", require("./auth.routes"));
 // Desde aqui, todo exige token valido y el rol correcto
 router.use(verificarToken);
+router.use(auditar);
 // Operaciones de negocio
 router.use(require("./operaciones.routes"));
 router.use("/productos", permitir(ACCESO.productos),
