@@ -32,6 +32,19 @@ router.post("/movimientos/ajuste", autorizarRoles(inventario),
     MovimientoInventarioController.ajuste);
 router.get("/movimientos/historial", autorizarRoles(inventario),
     MovimientoInventarioController.historial);
+// Pedidos (RF16 a RF20)
+router.post("/pedidos/crear", autorizarRoles(pedir),
+    PedidoController.crear);
+router.put("/pedidos/:id/lineas", autorizarRoles(pedir),
+    PedidoController.editar);
+router.patch("/pedidos/:id/aprobar", autorizarRoles(despachar),
+    PedidoController.aprobar);
+router.patch("/pedidos/:id/rechazar", autorizarRoles(despachar),
+    PedidoController.rechazar);
+router.patch("/pedidos/:id/despachar", autorizarRoles(despachar),
+    PedidoController.despachar);
+router.patch("/pedidos/:id/recibir", autorizarRoles(pedir),
+    PedidoController.recibir);
 
 module.exports = router;
 
