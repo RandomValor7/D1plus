@@ -45,6 +45,11 @@ router.patch("/pedidos/:id/despachar", autorizarRoles(despachar),
     PedidoController.despachar);
 router.patch("/pedidos/:id/recibir", autorizarRoles(pedir),
     PedidoController.recibir);
+// Devoluciones (RF23 y RF39)
+router.get("/devoluciones", autorizarRoles(devoluciones),
+    DevolucionController.getAll);
+router.post("/devoluciones", autorizarRoles(devoluciones),
+    DevolucionController.create);
 
 module.exports = router;
 

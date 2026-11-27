@@ -18,6 +18,8 @@ module.exports = {
     DetallePedidoModel: require("./detalle_pedido.model"),
     NotificacionModel: require("./notificacion.model"),
     AuditoriaModel: require("./auditoria.model"),
+    DevolucionModel: require("./devolucion.model"),
+    ReporteModel: require("./reporte.model"),
     evolucionModel: require("./devolucion.model"),
     ReporteModel: require("./reporte.model"),
 
