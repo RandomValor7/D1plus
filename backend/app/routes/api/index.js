@@ -7,6 +7,8 @@ const router = Router();
 router.use("/auth", require("./auth.routes"));
 // Desde aqui, todo exige token valido y el rol correcto
 router.use(verificarToken);
+// Operaciones de negocio
+router.use(require("./operaciones.routes"));
 router.use("/productos", permitir(ACCESO.productos),
     require("./producto.routes"));
 router.use("/roles", permitir(ACCESO.roles),

@@ -1,4 +1,6 @@
 const { VentaModel } = require("../models");
+const { unirLineas } = require("../utils/lineas");
+const reposicion = require("../servicios/reposicion");
 const { faltanCampos, manejarError } =
     require("../utils/errores");
 
@@ -73,5 +75,29 @@ const anular = async (req, res) => {
     }
 };
 
-module.exports = { getAll, getById, create, anular };
+// RF13: Registra una venta con varios productos
+const registrar = async (req, res) => {
+    try {
+        const { lineas, error } = unirLineas(req.body?.lineas);
+        if (error) {
+            return res.status(400).json({ mensaje: error });
+        }
+        const venta = await VentaModel.registrar(req.usuario.id, lineas);
+        // Con el stock ya descontado: alertas (RF33) y pedidos (RF15)
+        for (const id of venta.productos) {
+            await reposicion
+                .revisarProducto(id, req.usuario.id)
+                .catch((e) => console.error(e));
+        }
+        res.status(201).json({
+            mensaje: "Venta registrada",
+            id: venta.id_venta,
+            total: venta.total
+        });
+    } catch (error) {
+        manejarError(res, error, "registrar venta");
+    }
+};
+
+module.exports = { getAll, getById, create, anular, registrar };
 
