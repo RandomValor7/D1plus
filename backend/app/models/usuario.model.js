@@ -70,6 +70,25 @@ const remove = async (id) => {
     return resultado.affectedRows;
 };
 
-module.exports = {
-    getAll, getById, getByCorreo, create, update, remove
+// RF04: datos para recuperar la contrasena
+const getParaReset = async (id) => {
+    const [filas] = await db.query(
+        `SELECT id_usuario, correo, contrasena, estado
+ FROM usuario WHERE id_usuario = ?`,
+        [id]
+    );
+    return filas[0];
 };
+const cambiarClave = async (id, hash) => {
+    const [resultado] = await db.query(
+        "UPDATE usuario SET contrasena = ? WHERE id_usuario = ?",
+        [hash, id]
+    );
+    return resultado.affectedRows;
+};
+
+module.exports = {
+    getAll, getById, getByCorreo, getParaReset, cambiarClave,
+    create, update, remove
+};
+

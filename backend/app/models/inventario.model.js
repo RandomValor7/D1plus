@@ -51,6 +51,33 @@ const remove = async (id) => {
     return resultado.affectedRows;
 };
 
+// Inventario con nombres de producto y ubicacion (RF06 y RF07),  con filtros.
+const detalle = async ({ id_bodega, id_tienda, buscar } = {}) => {
+    let sql = `SELECT i.id_inventario, p.codigo, p.nombre AS producto,
+ COALESCE(b.nombre, t.nombre) AS ubicacion, i.cantidad,
+ p.stock_minimo AS minimo, i.fecha_actualizacion
+ FROM inventario i
+ JOIN producto p ON p.id_producto = i.id_producto
+ LEFT JOIN bodega b ON b.id_bodega = i.id_bodega
+ LEFT JOIN tienda t ON t.id_tienda = i.id_tienda
+ WHERE p.estado = 1`;
+    const valores = [];
+    if (id_bodega) {
+        sql += " AND i.id_bodega = ?";
+        valores.push(id_bodega);
+    }
+    if (id_tienda) {
+        sql += " AND i.id_tienda = ?";
+        valores.push(id_tienda);
+    }
+    if (buscar) {
+        sql += " AND p.nombre LIKE ?";
+        valores.push("%" + buscar + "%");
+    }
+    const [filas] = await db.query(sql + " ORDER BY p.nombre", valores);
+    return filas;
+};
+
 module.exports = {
-    getAll, getById, create, update, remove
+    getAll, getById, create, update, remove, detalle
 };

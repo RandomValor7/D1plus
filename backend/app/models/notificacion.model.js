@@ -49,7 +49,17 @@ const remove = async (id) => {
     return resultado.affectedRows;
 };
 
+// Notificaciones de un usuario, las mas nuevas primero (RF33 a RF36)
+const getByUsuario = async (idUsuario) => {
+    const [filas] = await db.query(
+        `SELECT * FROM notificacion WHERE id_usuario = ?
+ ORDER BY fecha DESC, id_notificacion DESC`,
+        [idUsuario]
+    );
+    return filas;
+};
+
 module.exports = {
-    getAll, getById, create, update, remove
+    getAll, getById, create, update, remove, getByUsuario
 };
 
