@@ -23,5 +23,6 @@ module.exports = {
         require("./notificacion.controllers"),
     AuditoriaController: require("./auditoria.controllers"),
     DevolucionController: require("./devolucion.controllers"),
+    ReporteController: require("./reporte.controllers"),
 
 };

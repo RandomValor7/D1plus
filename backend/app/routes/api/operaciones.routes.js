@@ -50,6 +50,21 @@ router.get("/devoluciones", autorizarRoles(devoluciones),
     DevolucionController.getAll);
 router.post("/devoluciones", autorizarRoles(devoluciones),
     DevolucionController.create);
+// Reportes (RF24 a RF30) e historial (RF39)
+router.get("/reportes/ventas", autorizarRoles(reportes),
+    ReporteController.ventas);
+router.get("/reportes/inventario", autorizarRoles(reportes),
+    ReporteController.inventario);
+router.get("/reportes/agotados", autorizarRoles(reportes),
+    ReporteController.agotados);
+router.get("/reportes/por-agotarse", autorizarRoles(reportes),
+    ReporteController.porAgotarse);
+router.get("/reportes/pedidos", autorizarRoles(reportes),
+    ReporteController.pedidos);
+router.get("/reportes/rotacion", autorizarRoles(reportes),
+    ReporteController.rotacion);
+router.get("/historial/operaciones", autorizarRoles(reportes),
+    ReporteController.historial);
 
 module.exports = router;
 
