@@ -83,7 +83,22 @@ const remove = async (req, res) => {
     }
 };
 
+// RF06 y RF07: Inventario con nombres, filtrable por tienda o bodega
+const detalle = async (req, res) => {
+    try {
+        const filas = await InventarioModel.detalle({
+            id_bodega: req.query.id_bodega,
+            id_tienda: req.query.id_tienda,
+            buscar: req.query.buscar
+        });
+        res.json(filas);
+    } catch (error) {
+        manejarError(res, error, "consultar inventario");
+    }
+};
+
+
 module.exports = {
-    getAll, getById, create, update, remove
+    getAll, getById, create, update, remove, detalle
 };
 
