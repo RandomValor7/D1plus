@@ -19,6 +19,19 @@ const getById = async (id) => {
     return filas[0];
 };
 
+// esto es solo para el login ya que trae la contrasena cifrada y el nombre del rol
+const getByCorreo = async (correo) => {
+    const [filas] = await db.query(
+        `SELECT u.id_usuario, u.nombre, u.correo, u.contrasena,
+ u.cargo, u.estado, r.nombre_rol
+ FROM usuario u
+ JOIN rol r ON r.id_rol = u.id_rol
+ WHERE u.correo = ?`,
+        [correo]
+    );
+    return filas[0];
+};
+
 const create = async (datos) => {
     const { nombre, correo, contrasena, cargo, id_rol } = datos;
     const [resultado] = await db.query(
@@ -58,5 +71,5 @@ const remove = async (id) => {
 };
 
 module.exports = {
-    getAll, getById, create, update, remove
+    getAll, getById, getByCorreo, create, update, remove
 };

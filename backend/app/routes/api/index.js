@@ -20,5 +20,6 @@ router.use("/detalle-pedidos",
     require("./detalle_pedido.routes"));
 router.use("/notificaciones", require("./notificacion.routes"));
 router.use("/auditorias", require("./auditoria.routes"));
+router.use("/auth", require("./auth.routes"));
 
 module.exports = router;

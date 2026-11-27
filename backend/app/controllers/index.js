@@ -1,6 +1,7 @@
 
 module.exports = {
 
+    AuthController: require("./auth.controllers"),
     ProductoController: require("./producto.controllers"),
     RolController: require("./rol.controllers"),
     UsuarioController: require("./usuario.controllers"),
