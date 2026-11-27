@@ -481,6 +481,34 @@ UNLOCK TABLES;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+--
+-- Table structure for table `devolucion`
+--
+
+DROP TABLE IF EXISTS `devolucion`;
+
+CREATE TABLE devolucion (
+ id_devolucion INT NOT NULL AUTO_INCREMENT,
+ fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ cantidad INT NOT NULL,
+ motivo VARCHAR(255) NOT NULL,
+ id_producto INT NOT NULL,
+ id_proveedor INT NOT NULL,
+ id_usuario INT NOT NULL,
+ PRIMARY KEY (id_devolucion),
+ CONSTRAINT fk_devolucion_producto FOREIGN KEY (id_producto)
+ REFERENCES producto (id_producto)
+ ON DELETE RESTRICT ON UPDATE CASCADE,
+ CONSTRAINT fk_devolucion_proveedor FOREIGN KEY (id_proveedor)
+ REFERENCES proveedor (id_proveedor)
+ ON DELETE RESTRICT ON UPDATE CASCADE,
+ CONSTRAINT fk_devolucion_usuario FOREIGN KEY (id_usuario)
+ REFERENCES usuario (id_usuario)
+ ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+ COLLATE=utf8mb4_0900_ai_ci;
+
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

@@ -12,7 +12,19 @@ const faltanCampos = (res, datos, requeridos) => {
     return true;
 };
 
+// Error de negocio con su codigo HTTP 404,409 etc...
+const crearError = (estado, mensaje) => {
+    const error = new Error(mensaje);
+    error.estado = estado;
+    return error;
+};
+
 const manejarError = (res, error, accion) => {
+    if (error.estado) {
+        return res.status(error.estado).json({
+            mensaje: error.message
+        });
+    }
     console.error(error);
     const conocidos = {
         ER_DUP_ENTRY: [409, "Ya existe un registro igual"],
@@ -24,6 +36,12 @@ const manejarError = (res, error, accion) => {
     };
     const [estado, mensaje] = conocidos[error.code]
         ?? [500, "Error al " + accion];
+    if (estado === 500) {
+        // RF36: avisa a los administradores de un error critico
+        require("../servicios/alertas")
+            .notificarError(accion)
+            .catch(() => { });
+    }
     res.status(estado).json({ mensaje });
 };
 
@@ -40,4 +58,10 @@ const sinCambios = (res, datos, editables) => {
     return true;
 };
 
-module.exports = { faltanCampos, manejarError, sinCambios };
+module.exports = {
+    faltanCampos,
+    manejarError,
+    sinCambios,
+    crearError
+};
+
