@@ -6,22 +6,24 @@ import Select from "../ui/Select";
 import Table from "../ui/Table";
 import { formatoPesos } from "../../utils/formato";
 
-// Líneas de una venta o un pedido (cabecera + detalle)
-// lineas: [{ id, nombre, precio, cantidad }]
-
+// Lineas de una venta o un pedido (cabecera + detalle).
+// productos: los de la API (id_producto, nombre, precio)
+// lineas: [{ id, nombre, precio, cantidad }] (id = id_producto)
 export default function DetalleLineas({ productos, lineas, onChange }) {
     const [idProducto, setIdProducto] = useState("");
     const [cantidad, setCantidad] = useState("");
     function agregar() {
-        const producto = productos.find((p) => p.id === Number(idProducto));
+        const producto = productos.find(
+            (p) => p.id_producto === Number(idProducto)
+        );
         const unidades = Number(cantidad);
         if (!producto || unidades <= 0) return;
-        const existente = lineas.find((l) => l.id === producto.id);
+        const existente = lineas.find((l) => l.id === producto.id_producto);
         if (existente) {
             // Un producto no se repite en la misma venta o pedido
             onChange(
                 lineas.map((l) =>
-                    l.id === producto.id
+                    l.id === producto.id_producto
                         ? { ...l, cantidad: l.cantidad + unidades }
                         : l
                 )
@@ -30,9 +32,9 @@ export default function DetalleLineas({ productos, lineas, onChange }) {
             onChange([
                 ...lineas,
                 {
-                    id: producto.id,
+                    id: producto.id_producto,
                     nombre: producto.nombre,
-                    precio: producto.precio,
+                    precio: Number(producto.precio),
                     cantidad: unidades,
                 },
             ]);
@@ -73,7 +75,7 @@ export default function DetalleLineas({ productos, lineas, onChange }) {
                 <Select
                     etiqueta="Producto"
                     opciones={productos.map((p) => ({
-                        valor: p.id,
+                        valor: p.id_producto,
                         texto: p.nombre,
                     }))}
                     value={idProducto}
@@ -93,7 +95,7 @@ export default function DetalleLineas({ productos, lineas, onChange }) {
             <Table
                 columnas={columnas}
                 filas={lineas}
-                vacio="Aún no hay productos agregados."
+                vacio="Aun no hay productos agregados."
             />
             <p className="total">Total: {formatoPesos(total)}</p>
         </div>

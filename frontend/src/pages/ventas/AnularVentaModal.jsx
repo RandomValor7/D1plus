@@ -5,12 +5,11 @@ import Modal from "../../components/ui/Modal";
 import JustificacionForm from "../../components/common/JustificacionForm";
 
 // venta === null significa que el modal está cerrado
-
 export default function AnularVentaModal({ venta, onCerrar, onAnular }) {
     return (
         <Modal
             abierto={venta !== null}
-            titulo={venta ? "Anular venta #" + venta.id : ""}
+            titulo={venta ? "Anular venta #" + venta.id_venta : ""}
             onCerrar={onCerrar}
         >
             <Alert tipo="advertencia">
@@ -20,7 +19,7 @@ export default function AnularVentaModal({ venta, onCerrar, onAnular }) {
                 etiqueta="Justificación de la anulación"
                 textoBoton="Anular venta"
                 onCancelar={onCerrar}
-                onConfirmar={(texto) => onAnular(venta.id, texto)}
+                onConfirmar={(texto) => onAnular(venta.id_venta, texto)}
             />
         </Modal>
     );
