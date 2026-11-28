@@ -4,7 +4,10 @@ const { enTransaccion } = require("../utils/transaccion");
 
 const getAll = async () => {
     const [filas] = await db.query(
-        "SELECT * FROM venta"
+        `SELECT v.*, u.nombre AS vendedor
+ FROM venta v
+ JOIN usuario u ON u.id_usuario = v.id_usuario
+ ORDER BY v.fecha_venta DESC, v.id_venta DESC`
     );
     return filas;
 };

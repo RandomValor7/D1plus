@@ -2,7 +2,10 @@ const db = require("../config/db");
 
 const getAll = async () => {
     const [filas] = await db.query(
-        "SELECT * FROM auditoria"
+        `SELECT a.*, u.nombre AS usuario
+ FROM auditoria a
+ JOIN usuario u ON u.id_usuario = a.id_usuario
+ ORDER BY a.fecha DESC, a.id_auditoria DESC`
     );
     return filas;
 };
