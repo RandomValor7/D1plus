@@ -14,22 +14,28 @@ export default function Sidebar() {
             <nav>
                 {items.map((m) => {
                     const activo = pathname.startsWith(m.base);
+                    // Solo las pantallas que el rol puede usar
+                    const subs = (m.sub ?? []).filter(
+                        (s) => !s.roles || s.roles.includes(usuario.rol)
+                    );
                     return (
                         <div key={m.base}>
                             <Link
                                 to={m.ruta}
-                                className={"sidebar-link" + (activo ? " activo" : "")}
+                                className={
+                                    "sidebar-link" + (activo ? " activo" : "")
+                                }
                             >
                                 {m.etiqueta}
                             </Link>
                             {activo &&
-                                m.sub &&
-                                m.sub.map((s) => (
+                                subs.map((s) => (
                                     <Link
                                         key={s.ruta}
                                         to={s.ruta}
                                         className={
-                                            "sidebar-sub" + (pathname === s.ruta ? " activo" : "")
+                                            "sidebar-sub" +
+                                            (pathname === s.ruta ? " activo" : "")
                                         }
                                     >
                                         {s.etiqueta}
@@ -42,4 +48,3 @@ export default function Sidebar() {
         </aside>
     );
 }
-

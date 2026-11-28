@@ -6,22 +6,27 @@ export const ROLES = {
 };
 
 const { ADMIN, GERENTE, TIENDA, BODEGA } = ROLES;
-
-// Estos roles pueden entrar a cada módulo (datos de prueba, RF32)
+// Estos roles pueden entrar a cada modulo y a cada pantalla.
+// Son los mismos que valida el backend (backend/app/config/permisos.js):
 
 export const ACCESO = {
     todos: [ADMIN, GERENTE, TIENDA, BODEGA],
     usuarios: [ADMIN],
     inventario: [ADMIN, GERENTE, TIENDA, BODEGA],
+    moverInventario: [ADMIN, GERENTE, BODEGA],
     ventas: [ADMIN, GERENTE, TIENDA],
+    anularVentas: [ADMIN, GERENTE],
     pedidos: [ADMIN, GERENTE, TIENDA, BODEGA],
+    pedir: [ADMIN, GERENTE, TIENDA],
+    despachar: [ADMIN, GERENTE, BODEGA],
     proveedores: [ADMIN, GERENTE, BODEGA],
+    registrarProveedor: [ADMIN, GERENTE],
+    devoluciones: [ADMIN, GERENTE, BODEGA],
     reportes: [ADMIN, GERENTE],
     auditoria: [ADMIN, GERENTE],
 };
 
-// Menú lateral. "sub" son las pantallas de cada módulo.
-
+// Menu lateral. "sub" son las pantallas de cada modulo
 export const MENU = [
     {
         etiqueta: "Dashboard",
@@ -29,6 +34,7 @@ export const MENU = [
         ruta: "/dashboard",
         roles: ACCESO.todos,
     },
+
     {
         etiqueta: "Usuarios",
         base: "/usuarios",
@@ -39,6 +45,7 @@ export const MENU = [
             { etiqueta: "Asignar roles", ruta: "/usuarios/roles" },
         ],
     },
+
     {
         etiqueta: "Inventario",
         base: "/inventario",
@@ -46,11 +53,27 @@ export const MENU = [
         roles: ACCESO.inventario,
         sub: [
             { etiqueta: "Inventario general", ruta: "/inventario" },
-            { etiqueta: "Entrada", ruta: "/inventario/entrada" },
-            { etiqueta: "Salida", ruta: "/inventario/salida" },
-            { etiqueta: "Actualizar", ruta: "/inventario/actualizar" },
+
+            {
+                etiqueta: "Entrada",
+                ruta: "/inventario/entrada",
+                roles: ACCESO.moverInventario,
+            },
+
+            {
+                etiqueta: "Salida",
+                ruta: "/inventario/salida",
+                roles: ACCESO.moverInventario,
+            },
+
+            {
+                etiqueta: "Actualizar",
+                ruta: "/inventario/actualizar",
+                roles: ACCESO.moverInventario,
+            },
         ],
     },
+
     {
         etiqueta: "Ventas",
         base: "/ventas",
@@ -61,6 +84,7 @@ export const MENU = [
             { etiqueta: "Historial de ventas", ruta: "/ventas" },
         ],
     },
+
     {
         etiqueta: "Pedidos",
         base: "/pedidos",
@@ -68,11 +92,27 @@ export const MENU = [
         roles: ACCESO.pedidos,
         sub: [
             { etiqueta: "Lista de pedidos", ruta: "/pedidos" },
-            { etiqueta: "Crear pedido", ruta: "/pedidos/crear" },
-            { etiqueta: "Aprobar pedidos", ruta: "/pedidos/aprobar" },
-            { etiqueta: "Despachar pedidos", ruta: "/pedidos/despachar" },
+
+            {
+                etiqueta: "Crear pedido",
+                ruta: "/pedidos/crear",
+                roles: ACCESO.pedir,
+            },
+
+            {
+                etiqueta: "Aprobar pedidos",
+                ruta: "/pedidos/aprobar",
+                roles: ACCESO.despachar,
+            },
+
+            {
+                etiqueta: "Despachar pedidos",
+                ruta: "/pedidos/despachar",
+                roles: ACCESO.despachar,
+            },
         ],
     },
+
     {
         etiqueta: "Proveedores",
         base: "/proveedores",
@@ -80,10 +120,21 @@ export const MENU = [
         roles: ACCESO.proveedores,
         sub: [
             { etiqueta: "Lista", ruta: "/proveedores" },
-            { etiqueta: "Registrar", ruta: "/proveedores/registrar" },
-            { etiqueta: "Devolución", ruta: "/proveedores/devolucion" },
+
+            {
+                etiqueta: "Registrar",
+                ruta: "/proveedores/registrar",
+                roles: ACCESO.registrarProveedor,
+            },
+
+            {
+                etiqueta: "Devolucion",
+                ruta: "/proveedores/devolucion",
+                roles: ACCESO.devoluciones,
+            },
         ],
     },
+
     {
         etiqueta: "Reportes",
         base: "/reportes",
@@ -93,17 +144,19 @@ export const MENU = [
             { etiqueta: "Ventas", ruta: "/reportes/ventas" },
             { etiqueta: "Inventario", ruta: "/reportes/inventario" },
             { etiqueta: "Agotados", ruta: "/reportes/agotados" },
-            { etiqueta: "Rotación", ruta: "/reportes/rotacion" },
+            { etiqueta: "Rotacion", ruta: "/reportes/rotacion" },
         ],
     },
+
     {
         etiqueta: "Notificaciones",
         base: "/notificaciones",
         ruta: "/notificaciones",
         roles: ACCESO.todos,
     },
+
     {
-        etiqueta: "Auditoría",
+        etiqueta: "Auditoria",
         base: "/auditoria",
         ruta: "/auditoria",
         roles: ACCESO.auditoria,
