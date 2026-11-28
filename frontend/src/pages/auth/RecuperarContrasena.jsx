@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { api } from "../../services/api";
 import Alert from "../../components/ui/Alert";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
@@ -9,15 +10,22 @@ import Input from "../../components/ui/Input";
 export default function RecuperarContrasena() {
     const [correo, setCorreo] = useState("");
     const [error, setError] = useState("");
-    const [enviado, setEnviado] = useState(false);
-    function enviar(e) {
+    const [mensaje, setMensaje] = useState("");
+
+    async function enviar(e) {
         e.preventDefault();
+        setMensaje("");
         if (correo.trim() === "") {
             setError("Campo obligatorio");
             return;
         }
         setError("");
-        setEnviado(true);
+        try {
+            const respuesta = await api.post("/auth/recuperar", { correo });
+            setMensaje(respuesta.mensaje);
+        } catch (err) {
+            setError(err.message);
+        }
     }
     return (
         <>
@@ -25,11 +33,7 @@ export default function RecuperarContrasena() {
                 Ingresa tu correo y te enviaremos un enlace para restablecer tu
                 contraseña
             </p>
-            {enviado && (
-                <Alert tipo="exito">
-                    Si el correo existe, recibirás el enlace (simulado, sin backend).
-                </Alert>
-            )}
+            {mensaje && <Alert tipo="exito">{mensaje}</Alert>}
             <form onSubmit={enviar}>
                 <Input
                     etiqueta="Correo electrónico"

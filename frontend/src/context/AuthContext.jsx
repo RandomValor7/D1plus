@@ -1,7 +1,8 @@
-import { createContext, useContext, useState } from "react";
-import { usuarios } from "../data/datosPrueba";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { api, configurarExpiracion } from "../services/api";
 
 const AuthContext = createContext(null);
+
 function leerSesion() {
     try {
         const guardado = sessionStorage.getItem("d1plus_usuario");
@@ -13,23 +14,33 @@ function leerSesion() {
 
 export function AuthProvider({ children }) {
     const [usuario, setUsuario] = useState(leerSesion);
-    function login(correo, contrasena) {
-        const encontrado = usuarios.find(
-            (u) => u.correo === correo && u.contrasena === contrasena
-        );
-        if (!encontrado) return false;
-        const sesion = { ...encontrado };
-        delete sesion.contrasena;
-        sessionStorage.setItem("d1plus_usuario", JSON.stringify(sesion));
-        setUsuario(sesion);
-        return true;
+    const [aviso, setAviso] = useState("");
+    const cerrar = useCallback(() => {
+        sessionStorage.removeItem("d1plus_usuario");
+        sessionStorage.removeItem("d1plus_token");
+        setUsuario(null);
+    }, []);
+    // Si la API responde 401 con una sesion abierta, el token vencio
+    useEffect(() => {
+        configurarExpiracion(() => {
+            cerrar();
+            setAviso("Tu sesion expiro, inicia sesion de nuevo");
+        });
+    }, [cerrar]);
+    // Inicia sesion en la API. Si falla, lanza el error con su mensaje respectivo
+    async function login(correo, contrasena) {
+        const respuesta = await api.post("/auth/login", { correo, contrasena });
+        sessionStorage.setItem("d1plus_token", respuesta.token);
+        sessionStorage.setItem("d1plus_usuario", JSON.stringify(respuesta.usuario));
+        setAviso("");
+        setUsuario(respuesta.usuario);
     }
     function logout() {
-        sessionStorage.removeItem("d1plus_usuario");
-        setUsuario(null);
+        setAviso("");
+        cerrar();
     }
     return (
-        <AuthContext.Provider value={{ usuario, login, logout }}>
+        <AuthContext.Provider value={{ usuario, aviso, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

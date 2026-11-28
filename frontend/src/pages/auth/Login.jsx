@@ -8,26 +8,33 @@ import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 
 export default function Login() {
-    const { login } = useAuth();
+    const { login, aviso } = useAuth();
     const navigate = useNavigate();
     const [correo, setCorreo] = useState("");
     const [contrasena, setContrasena] = useState("");
     const [error, setError] = useState("");
-    function enviar(e) {
+    const [enviando, setEnviando] = useState(false);
+
+    async function enviar(e) {
         e.preventDefault();
         if (correo === "" || contrasena === "") {
             setError("Complete todos los campos.");
             return;
         }
-        if (login(correo, contrasena)) {
+        setEnviando(true);
+        try {
+            await login(correo, contrasena);
             navigate("/dashboard");
-        } else {
-            setError("Correo o contraseña incorrectos.");
+        } catch (err) {
+            // Mensaje de la API: credenciales incorrectas, usuario inactivo...
+            setError(err.message);
+            setEnviando(false);
         }
     }
     return (
         <>
             <p className="auth-subtitulo">Inicia sesión en tu cuenta</p>
+            {aviso && <Alert tipo="advertencia">{aviso}</Alert>}
             {error && <Alert tipo="error">{error}</Alert>}
             <form onSubmit={enviar}>
                 <Input
@@ -44,17 +51,13 @@ export default function Login() {
                     value={contrasena}
                     onChange={(e) => setContrasena(e.target.value)}
                 />
-                <Button type="submit">Iniciar sesión</Button>
+                <Button type="submit" disabled={enviando}>
+                    {enviando ? "Entrando..." : "Iniciar sesión"}
+                </Button>
             </form>
             <p>
                 <Link to="/recuperar-contrasena">¿Olvidaste tu contraseña?</Link>
             </p>
-            <p className="ayuda-prueba">
-                Usuarios de prueba: admin@d1plus.com / Admin123, gerente@d1plus.com
-                / Gerente123, tienda@d1plus.com / Tienda123, bodega@d1plus.com /
-                Bodega123
-            </p>
         </>
     );
 }
-
